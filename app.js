@@ -12,7 +12,6 @@ const DATABASE_URL = process.env.DATABASE_URL;
 connectDB(DATABASE_URL);
 app.use(express.json());
 app.use("/student", web);
-
 app.listen(process.env.PORT, () => {
   console.log(`server is run on ${process.env.PORT}`);
 });
