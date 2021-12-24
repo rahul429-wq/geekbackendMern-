@@ -3,6 +3,11 @@ import StudentModel from "../models/Student.js";
 class StudentController {
   static createDoc = async (req, res) => {
     try {
+      // console.log(req.body.name);
+      // console.log(req.body.email);
+      // if (req.body.name === "" || req.body.email === "") {
+      //   res.status(404).send("Something is wrong...");
+      // }
       const doc = new StudentModel(req.body);
       const result = await doc.save();
       res.status(201).send(result);
@@ -13,7 +18,7 @@ class StudentController {
   static getAllDoc = async (req, res) => {
     try {
       const result = await StudentModel.find();
-      res.send(result);
+      res.status(201).send(result);
     } catch (err) {
       console.log(err);
     }
@@ -21,7 +26,7 @@ class StudentController {
   static getSingleDocById = async (req, res) => {
     try {
       const result = await StudentModel.findById(req.params.id);
-      res.send(result);
+      res.status(201).send(result);
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +37,7 @@ class StudentController {
         req.params.id,
         req.body
       );
-      res.send(result);
+      res.status(201).send(result);
     } catch (err) {
       console.log(err);
     }
