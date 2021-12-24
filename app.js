@@ -7,6 +7,9 @@ import web from "./routes/web.js";
 dotenv.config();
 const app = express();
 app.use(cors());
+app.get("/", (req, res) => {
+  res.send({ msg: "hello" });
+});
 // const port = process.env.PORT || "3000";
 const DATABASE_URL = process.env.DATABASE_URL;
 connectDB(DATABASE_URL);
