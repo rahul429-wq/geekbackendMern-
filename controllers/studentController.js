@@ -8,6 +8,12 @@ class StudentController {
       // if (req.body.name === "" || req.body.email === "") {
       //   res.status(404).send("Something is wrong...");
       // }
+      const { name, email } = req.body;
+      if (!name || !email) {
+        res.status(422).json({
+          message: "Please fill all the fields",
+        });
+      }
       const doc = new StudentModel(req.body);
       const result = await doc.save();
       res.status(201).send(result);
